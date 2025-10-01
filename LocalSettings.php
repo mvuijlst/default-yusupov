@@ -212,3 +212,8 @@ $wgGroupPermissions['sysop']['upload'] = true;
 
 # (Optional) if you enabled API write in the past, ensure anonymous can't write via API:
 $wgGroupPermissions['*']['writeapi'] = false;
+
+
+$wgScriptPath = "";          // your wiki is in the webroot
+$wgArticlePath = "/wiki/$1"; // pretty URLs
+$wgUsePathInfo = true;
