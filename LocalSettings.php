@@ -155,11 +155,6 @@ $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-nc-sa.png";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
 
-# The following permissions were set based on your choice in the installer
-$wgGroupPermissions["*"]["createaccount"] = false;
-$wgGroupPermissions["*"]["edit"] = false;
-$wgGroupPermissions["*"]["read"] = false;
-
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, e.g. 'vector' or 'monobook':
 $wgDefaultSkin = "vector";
@@ -181,3 +176,31 @@ wfLoadExtension( 'WikiEditor' );
 # End of automatically generated settings.
 # Add more configuration options below.
 
+
+
+# --- Public read, single-user edit lockdown ---
+# Everyone can read:
+$wgGroupPermissions['*']['read'] = true;
+
+# No anonymous edits or page creation:
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['createpage'] = false;
+$wgGroupPermissions['*']['createtalk'] = false;
+
+# Disable self-service account creation:
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['user']['createaccount'] = false;
+
+# Logged-in users (non-admins) cannot edit:
+$wgGroupPermissions['user']['edit'] = false;
+
+# Only admins (sysops) can edit (default is already true; keep explicit for clarity):
+$wgGroupPermissions['sysop']['edit'] = true;
+
+# (Optional) keep uploads admin-only:
+$wgGroupPermissions['user']['upload'] = false;
+$wgGroupPermissions['autoconfirmed']['upload'] = false;
+$wgGroupPermissions['sysop']['upload'] = true;
+
+# (Optional) if you enabled API write in the past, ensure anonymous can't write via API:
+$wgGroupPermissions['*']['writeapi'] = false;
