@@ -179,6 +179,9 @@ $wgDefaultUserOptions['vector-theme'] = 'os';
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WikiEditor' );
+wfLoadExtension( 'ParserFunctions' );
+wfLoadExtension( 'Scribunto' );
+$wgScribuntoDefaultEngine = 'luastandalone';
 
 
 # End of automatically generated settings.
