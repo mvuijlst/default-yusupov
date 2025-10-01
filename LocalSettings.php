@@ -163,6 +163,14 @@ $wgDefaultSkin = "vector-2022";
 # The following skins were automatically enabled:
 wfLoadSkin( 'Vector' );
 
+# Show the theme switcher for everyone (incl. anonymous users)
+$wgVectorNightMode['logged_in']  = true;
+$wgVectorNightMode['logged_out'] = true;
+
+# Make the default follow the visitor’s OS setting (Light/Dark/Auto)
+$wgDefaultUserOptions['vector-theme'] = 'os';
+
+
 
 # Enabled extensions. Most of the extensions are enabled by adding
 # wfLoadExtension( 'ExtensionName' );
