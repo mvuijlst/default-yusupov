@@ -179,6 +179,7 @@ $wgDefaultUserOptions['vector-theme'] = 'os';
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WikiEditor' );
+wfLoadExtension( 'Cite' );  
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'Scribunto' );
 $wgScribuntoDefaultEngine = 'luastandalone';
