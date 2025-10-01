@@ -183,6 +183,7 @@ wfLoadExtension( 'Cite' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'Scribunto' );
 $wgScribuntoDefaultEngine = 'luastandalone';
+wfLoadExtension( 'TemplateData' );
 
 
 # End of automatically generated settings.
