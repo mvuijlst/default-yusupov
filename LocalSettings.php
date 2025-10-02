@@ -229,3 +229,25 @@ $wgHooks['BeforePageDisplay'][] = static function ( OutputPage $out, Skin $skin 
     $out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
     return true;
 };
+
+
+// Force comfortable article text on Vector 2022, phones only.
+// Injected inline so it loads *after* all ResourceLoader modules (desktop + mobile).
+$wgHooks['BeforePageDisplay'][] = static function ( OutputPage $out, Skin $skin ) : bool {
+    if ( $skin->getSkinName() !== 'vector-2022' ) {
+        return true;
+    }
+    $css = <<<CSS
+@media (max-width: 768px) {
+  /* Override Vector tokens and computed size */
+  :root { --font-size-medium: 18px !important; --line-height-medium: 1.65 !important; }
+  .vector-body { font-size: 18px !important; line-height: 1.65 !important; }
+}
+@media (max-width: 480px) {
+  :root { --font-size-medium: 19px !important; --line-height-medium: 1.7 !important; }
+  .vector-body { font-size: 19px !important; line-height: 1.7 !important; }
+}
+CSS;
+    $out->addHeadItem( 'yb-mobile-type', "<style>$css</style>" );
+    return true;
+};
