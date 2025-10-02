@@ -238,14 +238,8 @@ $wgHooks['BeforePageDisplay'][] = static function ( OutputPage $out, Skin $skin 
         return true;
     }
     $css = <<<CSS
-@media (max-width: 768px) {
-  /* Override Vector tokens and computed size */
-  :root { --font-size-medium: 18px !important; --line-height-medium: 1.65 !important; }
-  .vector-body { font-size: 18px !important; line-height: 1.65 !important; }
-}
-@media (max-width: 480px) {
-  :root { --font-size-medium: 19px !important; --line-height-medium: 1.7 !important; }
-  .vector-body { font-size: 19px !important; line-height: 1.7 !important; }
+@media (pointer: coarse) {
+  .vector-body { font-size: clamp(17px, 1.9vw, 19px) !important; line-height: 1.65 !important; }
 }
 CSS;
     $out->addHeadItem( 'yb-mobile-type', "<style>$css</style>" );
