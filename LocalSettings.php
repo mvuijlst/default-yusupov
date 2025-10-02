@@ -222,3 +222,10 @@ $wgGroupPermissions['*']['writeapi'] = false;
 $wgScriptPath = "";          // your wiki is in the webroot
 $wgArticlePath = "/wiki/$1"; // pretty URLs
 $wgUsePathInfo = true;
+
+
+# Ensure a mobile viewport so Vector 2022 is responsive on phones
+$wgHooks['BeforePageDisplay'][] = static function ( OutputPage $out, Skin $skin ) : bool {
+    $out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
+    return true;
+};
